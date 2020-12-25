@@ -1,3 +1,4 @@
+import {addZero} from './supScript.js'
 export const videoPlayerInit = () => {
   console.log('Video init');
 // export default videoPlayer; - another way to expotr files
@@ -31,7 +32,6 @@ const stopPlay = () => {
   videoPlayer.pause();
   videoPlayer.currentTime = 0;
 }
-const addZero = n => n < 10 ? '0' + n : n;//(n)=>if(n<10){'0'+n};else{n};add 0 in video=progress if time is less 10 seconds;
  
 videoPlayer.addEventListener('click', togglePlay);
 videoButtonPlay.addEventListener('click', togglePlay);

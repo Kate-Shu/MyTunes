@@ -7,9 +7,12 @@ export const radioPlayerInit = () => {
  const radioNavigation = document.querySelector('.radio-navigation');
  const radioItem = document.querySelectorAll('.radio-item');
  const radioStop = document.querySelector('.radio-stop');
+ const radioVolume = document.querySelector('.radio-volume');
+ const radioMute = document.querySelector('.radio-mute');
 
 const audio = new Audio();
 audio.type = 'audio/aac';//aac-format/type, like mp3, but for streaming radio;
+let prevVolume = audio.volume;
 
 radioStop.disabled = true;
 
@@ -64,6 +67,20 @@ radioStop.addEventListener('click', () => {
     audio.pause();// .pause() - method
   }
 changeIconPlay();
-})
+});
 
+radioVolume.addEventListener('input', () => {
+  audio.volume = radioVolume.value / 100;
+  audio.muted = false; //volume != 0;
+});
+radioMute.addEventListener('click', () => {
+  audio.muted = !audio.muted; //mute when volume>0; if volume=0 => volume=mute;
+});
+
+radioVolume.value = audio.volume * 100;
+
+radioPlayerInit.stop = () => {
+  audio.pause();
+  changeIconPlay();
+}
 };

@@ -1,4 +1,5 @@
 import {addZero} from './supScript.js'
+
 export const musicPlayerInit = () => {
   const audio = document.querySelector('.audio');
   const audioImg = document.querySelector('.audio-img');
@@ -102,5 +103,15 @@ audioProgress.addEventListener('click', event => {
   const progress = (x / allWidth) * audioPlayer.duration;// duration define seconds(time) where to switch; x/allWidth - spot on the stripe
   audioPlayer.currentTime = progress;//fefinite current time of track;
 });
+
+musicPlayerInit.stop = () => {
+  if(!audioPlayer.paused){
+    audioPlayer.pause();
+    audio.classList.remove('play');
+    audioButtonPlay.classList.remove('fa-pause');
+    audioButtonPlay.classList.add('fa-play');
+  }
+
+}
 
 };

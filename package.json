@@ -1,0 +1,25 @@
+{
+  "name": "yatunes",
+  "version": "1.0.1",
+  "description": "media plyer",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kate-Shu/MyTunes.git"
+  },
+  "keywords": [
+    "katualpole"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kate-Shu/MyTunes/issues"
+  },
+  "homepage": "https://github.com/Kate-Shu/MyTunes#readme",
+  "devDependencies": {
+    "webpack-cli": "^4.3.0"
+  }
+}

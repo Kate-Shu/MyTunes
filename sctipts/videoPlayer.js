@@ -9,7 +9,13 @@ const videoButtonStop = document.querySelector('.video-button__stop');
 const videoProgress = document.querySelector('.video-progress');
 const videoTimePassed = document.querySelector('.video-time__passed');
 const videoTimeTotal  = document.querySelector('.video-time__total');
-//  
+const videoVolume = document.querySelector('.video-volume');
+const videoFullScreen = document.querySelector('.video-fullscreen');
+
+
+videoFullScreen.addEventListener('click', () => {
+  videoPlayer.requestFullscreen();
+})  
 const toggleIcon = () => {
   if(videoPlayer.paused){
     videoButtonPlay.classList.remove('fa-pause');
@@ -31,6 +37,11 @@ const togglePlay = () => {
 const stopPlay = () => {
   videoPlayer.pause();
   videoPlayer.currentTime = 0;
+}
+
+const changeValue = () => {
+  const valueVolume = videoVolume.value;
+  videoPlayer.volume = valueVolume / 100;
 }
  
 videoPlayer.addEventListener('click', togglePlay);
@@ -57,12 +68,26 @@ videoPlayer.addEventListener('timeupdate', () => {
   videoTimeTotal.textContent = `${addZero(minuteTotal)}:${addZero(secondsTotal)}`;//addZero(minuteTotal) + ':' + addZero(secondsTotal); //video-progress(stripe)
 })
  
-videoProgress.addEventListener('change', () => {
+videoProgress.addEventListener('input', () => {//innitialy was 'change' it shows only different content. 
   const duration = videoPlayer.duration;
   const value = videoProgress.value;
 
   videoPlayer.currentTime = (value * duration) / 100; //shows current time in seconds
 });
+
+videoVolume.addEventListener('input', changeValue);
+changeValue();
+
+videoPlayerInit.stop = () => {
+  videoPlayer.pause();
+  toggleIcon(); 
+}
+
+
+
+
+
+
 
 };
 
